@@ -20,7 +20,6 @@ repositories {
 }
 
 dependencies {
-    implementation('com.squareup.okhttp3:okhttp:4.3.1')
     implementation('org.springframework.boot:spring-boot-starter-thymeleaf')
     compile('org.jasig.cas.client:cas-client-support-springboot:3.6.0')
     implementation('org.springframework.boot:spring-boot-starter-web')

@@ -29,5 +29,10 @@
       "name": "spring.mvc.favicon.enabled",
       "type": "java.lang.String",
       "description": "Description for spring.mvc.favicon.enabled."
+    },
+    {
+      "name": "notifius.backend.base-url",
+      "type": "java.lang.String",
+      "description": "Description for notifius.backend.base-url."
     }
   ] }
