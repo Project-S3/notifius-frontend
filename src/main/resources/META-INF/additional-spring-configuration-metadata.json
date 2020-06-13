@@ -1,0 +1,33 @@
+{
+  "properties": [
+    {
+      "name": "cas.server-url-prefix",
+      "type": "java.lang.String",
+      "description": "Description for cas.server-url-prefix."
+    },
+    {
+      "name": "cas.server-login-url",
+      "type": "java.lang.String",
+      "description": "Description for cas.server-login-url."
+    },
+    {
+      "name": "cas.client-host-url",
+      "type": "java.lang.String",
+      "description": "Description for cas.client-host-url."
+    },
+    {
+      "name": "cas.authentication-url-patterns",
+      "type": "java.lang.String",
+      "description": "Description for cas.authentication-url-patterns."
+    },
+    {
+      "name": "cas.validation-url-patterns",
+      "type": "java.lang.String",
+      "description": "Description for cas.validation-url-patterns."
+    },
+    {
+      "name": "spring.mvc.favicon.enabled",
+      "type": "java.lang.String",
+      "description": "Description for spring.mvc.favicon.enabled."
+    }
+  ] }
