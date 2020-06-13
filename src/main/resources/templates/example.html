@@ -2,7 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head"></head>
 <body>
+
 <div th:replace="fragments/header"></div>
-<p th:text="'Hello, ' + ${name} + '!3'" />
+
+<div class="body-container">
+        <div th:replace="fragments/sidenav"></div>
+        <div class="content-container">example</div>
+</div>
+
 </body>
 </html>

@@ -1,0 +1,12 @@
+<div class="sidenav-container" xmlns:th="http://www.w3.org/1999/xhtml">
+    <ul class="nav flex-column">
+        <li class="nav-item">
+            <a class="nav-link" th:classappend="${isNotification} ? active : ''"
+               href="#" th:href="@{/}">Notification history</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:classappend="${isSettings} ? active : ''"
+               href="#" th:href="@{/settings}">Settings</a>
+        </li>
+    </ul>
+</div>

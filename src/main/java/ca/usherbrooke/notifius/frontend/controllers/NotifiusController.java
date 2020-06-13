@@ -9,10 +9,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class NotifiusController
 {
     @GetMapping("/")
-    public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name,
-                           Model model)
+    public String notification(Model model)
     {
-        model.addAttribute("name", name);
-        return "notifius";
+        model.addAttribute("isNotification", true);
+        model.addAttribute("isSettings", false);
+
+        return "notifications";
     }
+
+    @GetMapping("settings")
+    public String settings(Model model)
+    {
+        model.addAttribute("isSettings", true);
+        model.addAttribute("isNotification", false);
+
+        return "settings";
+    }
+
 }

@@ -1,0 +1,29 @@
+@import "variables";
+
+$sidenav-width: 17rem;
+
+.sidenav-container {
+  position: fixed;
+  left: 0;
+  height: 100%;
+  width: $sidenav-width;
+  padding-top: 1rem;
+  padding-left: 1rem;
+
+  box-shadow: 0 0 0.5rem #afafaf;
+
+  a {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: gray;
+    &:hover {
+      color: $notifius-darkgreen;
+    }
+    &.active {
+      color: $notifius-green;
+      &:hover {
+        color: $notifius-darkgreen;
+      }
+    }
+  }
+}

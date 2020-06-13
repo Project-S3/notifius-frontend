@@ -1,6 +1,13 @@
+$header-height: 5rem;
+
 .header-container {
-  height: 5rem;
+  z-index: 1000;
+  position: fixed;
+  height: $header-height;
+  width: 100%;
   padding: 1rem;
+
+  box-shadow: 0 0.15rem 0.25rem #afafaf;
 
   background: linear-gradient(90deg, #181818, #242424);
 

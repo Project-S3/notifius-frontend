@@ -1,2 +1,18 @@
 @import "variables";
 @import "header";
+@import "sidenav";
+
+.body-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  min-height: 100vh;
+
+  padding-top: $header-height;
+  padding-left: $sidenav-width;
+
+  .content-container {
+    margin: 1rem;
+  }
+}
