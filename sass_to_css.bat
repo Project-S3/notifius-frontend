@@ -1,0 +1,1 @@
+sass .\src\main\resources\scss\notifius.scss .\src\main\resources\public\css\notifius.css

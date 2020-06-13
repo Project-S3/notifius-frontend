@@ -1,0 +1,17 @@
+.header-container {
+  height: 5rem;
+  padding: 1rem;
+
+  background: linear-gradient(90deg, #181818, #242424);
+
+  .logo {
+    position: relative;
+    height: 100%;
+    width: auto;
+    margin-right: 1rem;
+  }
+
+  .title {
+    color: #ffffff;
+  }
+}
