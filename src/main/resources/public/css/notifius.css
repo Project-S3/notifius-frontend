@@ -1,9 +1,9 @@
 .header-container {
   z-index: 1000;
   position: fixed;
-  height: 5rem;
+  height: 3rem;
   width: 100%;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   box-shadow: 0 0.15rem 0.25rem #afafaf;
   background: linear-gradient(90deg, #181818, #242424);
 }
@@ -11,9 +11,12 @@
   position: relative;
   height: 100%;
   width: auto;
-  margin-right: 1rem;
+  margin-right: 0.75rem;
 }
 .header-container .title {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 400;
   color: #ffffff;
 }
 
@@ -41,6 +44,13 @@
   color: #067240;
 }
 
+@media screen and (max-width: 960px) {
+  .sidenav-container {
+    position: relative;
+    width: 100%;
+    padding: 0;
+  }
+}
 .notif-card-container {
   margin: 1rem 0;
   border-color: #00a759;
@@ -52,12 +62,19 @@
   right: 0;
   left: 0;
   min-height: 100vh;
-  padding-top: 5rem;
+  padding-top: 3rem;
   padding-left: 17rem;
 }
 .body-container .content-container {
   position: relative;
   margin: 1rem;
+}
+
+@media screen and (max-width: 960px) {
+  .body-container {
+    position: relative;
+    padding: 3rem 0 0 0;
+  }
 }
 
 /*# sourceMappingURL=notifius.css.map */

@@ -1,11 +1,11 @@
-$header-height: 5rem;
+$header-height: 3rem;
 
 .header-container {
   z-index: 1000;
   position: fixed;
   height: $header-height;
   width: 100%;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
 
   box-shadow: 0 0.15rem 0.25rem #afafaf;
 
@@ -15,10 +15,13 @@ $header-height: 5rem;
     position: relative;
     height: 100%;
     width: auto;
-    margin-right: 1rem;
+    margin-right: 0.75rem;
   }
 
   .title {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 400;
     color: #ffffff;
   }
 }
