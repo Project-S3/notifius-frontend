@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @EnableCasClient
 @SpringBootApplication
-public class NotifusFrontendApplication
+public class NotifiusFrontendApplication
 {
     public static void main(String[] args)
     {
-        SpringApplication.run(NotifusFrontendApplication.class, args);
+        SpringApplication.run(NotifiusFrontendApplication.class, args);
     }
 }

@@ -1,0 +1,14 @@
+<!--<p th:text="${notification.getTitle()}"></p>-->
+<!--<p th:text="${notification.getContent()}"></p>-->
+<!--<p th:text="${notification.getDate()}"></p>-->
+<!--<p th:text="${notification.getService()}"></p>-->
+
+<div class="notif-card-container card shadow-sm" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="card-header" th:text="${notification.getTitle()}"></div>
+    <div class="card-body">
+        <p class="card-text" th:text="${notification.getContent()}"></p>
+        <p class="card-text">
+            <small class="text-muted" th:text="'Sent by ' + ${notification.getService()} + ' service at ' + ${notification.getDate()}"></small>
+        </p>
+    </div>
+</div>

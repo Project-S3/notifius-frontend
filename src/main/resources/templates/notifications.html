@@ -7,10 +7,23 @@
 
 <div class="body-container">
     <div th:replace="fragments/sidenav"></div>
-    <div class="content-container">
-        Notification
+
+
+
+    <div class="notification-container">
+        <div class="content-container">
+
+            <div th:each="notification : ${notifications}">
+                <div th:replace="fragments/notifCard"></div>
+            </div>
+
+        </div>
     </div>
+
+
+
 </div>
 
-</body>1
+</body>
+1
 </html>

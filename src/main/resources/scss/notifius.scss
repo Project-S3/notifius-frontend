@@ -1,6 +1,8 @@
 @import "variables";
 @import "header";
 @import "sidenav";
+@import "notification";
+@import "notifCard";
 
 .body-container {
   position: absolute;
@@ -13,6 +15,7 @@
   padding-left: $sidenav-width;
 
   .content-container {
+    position: relative;
     margin: 1rem;
   }
 }
