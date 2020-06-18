@@ -2,15 +2,18 @@ package ca.usherbrooke.notifius.frontend.controllers;
 
 import ca.usherbrooke.notifius.frontend.models.Notification;
 import ca.usherbrooke.notifius.frontend.services.NotificationService;
+import org.jasig.cas.client.authentication.AttributePrincipalImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.security.Principal;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class NotifiusController
@@ -22,9 +25,12 @@ public class NotifiusController
     private NotificationService notificationService;
 
     @GetMapping("/")
-    public String notification(Model model)
+    public String notification(Principal principal ,Model model)
     {
-        List<Notification> notifications = notificationService.getAllNotification("gram3504",
+        Map<String, Object> details = ((AttributePrincipalImpl) principal).getAttributes();
+        String userId = (String) details.get("cip");
+
+        List<Notification> notifications = notificationService.getAllNotification(userId,
                                                                                   null,
                                                                                   null);
         model.addAttribute("isNotification", true);
