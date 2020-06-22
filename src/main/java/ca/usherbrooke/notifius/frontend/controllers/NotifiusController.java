@@ -1,7 +1,9 @@
 package ca.usherbrooke.notifius.frontend.controllers;
 
 import ca.usherbrooke.notifius.frontend.models.Notification;
+import ca.usherbrooke.notifius.frontend.models.Settings;
 import ca.usherbrooke.notifius.frontend.services.NotificationService;
+import ca.usherbrooke.notifius.frontend.services.SettingsService;
 import org.jasig.cas.client.authentication.AttributePrincipalImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +25,8 @@ public class NotifiusController
 
     @Autowired
     private NotificationService notificationService;
+    @Autowired
+    private SettingsService settingsService;
 
     @GetMapping("/")
     public String notification(Principal principal ,Model model)
@@ -53,10 +57,15 @@ public class NotifiusController
     }
 
     @GetMapping("settings")
-    public String settings(Model model)
+    public String settings(Principal principal, Model model)
     {
+        Map<String, Object> details = ((AttributePrincipalImpl) principal).getAttributes();
+        String userId = (String) details.get("cip");
+
+        Settings settings = settingsService.getSettings(userId);
+
         model.addAttribute("isSettings", true);
-        model.addAttribute("isNotification", false);
+        model.addAttribute("settings", settings);
 
         return "settings";
     }

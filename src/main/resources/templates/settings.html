@@ -8,8 +8,19 @@
 <div class="body-container">
     <div th:replace="fragments/sidenav"></div>
     <div class="content-container">
-        settings
+        Services :
     </div>
+
+    <div class="content-container">
+
+        <div th:each="services : ${settings.getEnableServices()}">
+            <div th:text="${services}"></div>
+        </div>
+
+    </div>
+
+</div>
+
 </div>
 
 </body>
