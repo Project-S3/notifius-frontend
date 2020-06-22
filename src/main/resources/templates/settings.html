@@ -7,21 +7,36 @@
 
 <div class="body-container">
     <div th:replace="fragments/sidenav"></div>
-    <div class="content-container">
-        Services :
-    </div>
 
     <div class="content-container">
-
-        <div th:each="services : ${settings.getEnableServices()}">
-            <div th:text="${services}"></div>
-        </div>
-
+        <form>
+            <label style="font-weight: bold;">Services : </label>
+            <br/>
+            <div th:each="service : ${services}" class="form-group">
+                <label style="display: inline-block;width:60%" th:text="${service}" th:for="${service}"></label>
+                <input style="display: inline-block;width:20%" th:id="${service}" th:value="${service}" type="checkbox" class="form-control settings-service-checkbox"
+                       th:checked="${settings.getEnableServices().contains(service)}">
+            </div>
+            <HR>
+            <label style="font-weight: bold">Modes d'envoi</label>
+            <br/>
+            <div th:each="notifSender : ${notificationSenders}" class="form-group">
+                <label style="display: inline-block;width:30%" th:text="${notifSender}" th:for="${notifSender}"></label>
+                <input style="display: inline-block;width:10%" th:id="${notifSender}" type="checkbox" class="form-control"
+                       th:checked="${settings.getNotificationSenders().containsKey(notifSender+'_SENDER')}">
+                <input style="display: inline-block;width:55%" th:id="${notifSender}+'Value'" class="form-control"
+                       th:value="${settings.getNotificationSenders().getOrDefault(notifSender+'_SENDER','')}">
+            </div>
+            <button id="settings-form-submit" class="btn btn-primary">Sauvegarder</button>
+        </form>
     </div>
 
 </div>
 
 </div>
+
+<script src="js/form.js"></script>
 
 </body>
 </html>
+

@@ -1,5 +1,6 @@
 package ca.usherbrooke.notifius.frontend.services;
 
+import ca.usherbrooke.notifius.frontend.models.NotificationSender;
 import ca.usherbrooke.notifius.frontend.models.Settings;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -27,19 +28,20 @@ public class SettingsService {
         return result;
     }
 
-    public String getNotificationSenders()
+    public String[] getNotificationSenders()
     {
         RestTemplate restTemplate = new RestTemplate();
-        String result = restTemplate.getForObject(String.format(NOTIFICATION_SENDERS_URL_FORMAT,
-                notifiusBaseEndpoint), String.class);
+        String[] result = restTemplate.getForObject(String.format(NOTIFICATION_SENDERS_URL_FORMAT,
+                notifiusBaseEndpoint), String[].class);
+
         return result;
     }
 
-    public String getServices()
+    public String[] getServices()
     {
         RestTemplate restTemplate = new RestTemplate();
-        String result = restTemplate.getForObject(String.format(SERVICES_URL_FORMAT,
-                notifiusBaseEndpoint), String.class);
+        String[] result = restTemplate.getForObject(String.format(SERVICES_URL_FORMAT,
+                notifiusBaseEndpoint), String[].class);
         return result;
     }
 }

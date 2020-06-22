@@ -1,14 +1,19 @@
 package ca.usherbrooke.notifius.frontend.controllers;
 
 import ca.usherbrooke.notifius.frontend.models.Notification;
+import ca.usherbrooke.notifius.frontend.models.NotificationSender;
 import ca.usherbrooke.notifius.frontend.models.Settings;
 import ca.usherbrooke.notifius.frontend.services.NotificationService;
 import ca.usherbrooke.notifius.frontend.services.SettingsService;
 import org.jasig.cas.client.authentication.AttributePrincipalImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.security.Principal;
 import java.text.DateFormat;
@@ -23,10 +28,15 @@ public class NotifiusController
     private static final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
     private static final DateFormat displayDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
+    private static final String SETTINGS_URL_FORMAT = "%s/users/%s/settings";
+
     @Autowired
     private NotificationService notificationService;
     @Autowired
     private SettingsService settingsService;
+
+    @Value("${notifius.backend.base-url}")
+    private String notifiusBaseEndpoint;
 
     @GetMapping("/")
     public String notification(Principal principal ,Model model)
@@ -62,12 +72,23 @@ public class NotifiusController
         Map<String, Object> details = ((AttributePrincipalImpl) principal).getAttributes();
         String userId = (String) details.get("cip");
 
-        Settings settings = settingsService.getSettings(userId);
-
         model.addAttribute("isSettings", true);
+        model.addAttribute("isNotification", false);
+
+        Settings settings = settingsService.getSettings(userId);
         model.addAttribute("settings", settings);
+
+        String[] services = settingsService.getServices();
+        model.addAttribute("services", services);
+
+        String[] notificationSenders = settingsService.getNotificationSenders();
+        for (int i=0; i<notificationSenders.length; i++){
+            notificationSenders[i] = notificationSenders[i].replace("_SENDER","");
+        }
+        model.addAttribute("notificationSenders", notificationSenders);
+
+        model.addAttribute("body", "");
 
         return "settings";
     }
-
 }
