@@ -20,13 +20,9 @@ document.getElementById(settingFormSubmitButtonID).onclick = () => {
     }
     const settings = { enableServices, notificationSenders }
 
-    // todo call ajax if works
-    $.ajax({
-        type: "POST",
-        url: "http://notifius.jplemay.com/users/lemj0601/settings",
-        data: JSON.stringify(settings),
-        contentType: 'application/json',
-    });
-
-    console.log(settings);
-};
+    fetch("http://localhost:8080/settings", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(settings)
+    }).then(r => console.log(r));
+ };

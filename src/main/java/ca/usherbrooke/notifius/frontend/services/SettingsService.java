@@ -1,16 +1,19 @@
 package ca.usherbrooke.notifius.frontend.services;
 
-import ca.usherbrooke.notifius.frontend.models.NotificationSender;
 import ca.usherbrooke.notifius.frontend.models.Settings;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import javax.validation.constraints.NotNull;
-import java.util.*;
 
 @Service
-public class SettingsService {
+public class SettingsService
+{
 
     private static final String SETTINGS_URL_FORMAT = "%s/users/%s/settings";
     private static final String NOTIFICATION_SENDERS_URL_FORMAT = "%s/notification-senders";
@@ -22,26 +25,36 @@ public class SettingsService {
     public Settings getSettings(@NotNull String userID)
     {
         RestTemplate restTemplate = new RestTemplate();
-        Settings result = restTemplate.getForObject(String.format(SETTINGS_URL_FORMAT,
-                notifiusBaseEndpoint,
-                userID), Settings.class);
-        return result;
+        return restTemplate.getForObject(String.format(SETTINGS_URL_FORMAT,
+                                                       notifiusBaseEndpoint,
+                                                       userID), Settings.class);
     }
 
     public String[] getNotificationSenders()
     {
         RestTemplate restTemplate = new RestTemplate();
-        String[] result = restTemplate.getForObject(String.format(NOTIFICATION_SENDERS_URL_FORMAT,
-                notifiusBaseEndpoint), String[].class);
-
-        return result;
+        return restTemplate.getForObject(String.format(NOTIFICATION_SENDERS_URL_FORMAT,
+                                                       notifiusBaseEndpoint), String[].class);
     }
 
     public String[] getServices()
     {
         RestTemplate restTemplate = new RestTemplate();
-        String[] result = restTemplate.getForObject(String.format(SERVICES_URL_FORMAT,
-                notifiusBaseEndpoint), String[].class);
-        return result;
+        return restTemplate.getForObject(String.format(SERVICES_URL_FORMAT,
+                                                       notifiusBaseEndpoint), String[].class);
+    }
+
+    public Settings setSettings(String userID, Settings settings)
+    {
+        RestTemplate restTemplate = new RestTemplate();
+        String url = String.format(SETTINGS_URL_FORMAT,
+                                   notifiusBaseEndpoint,
+                                   userID);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "application/json");
+
+        HttpEntity<Settings> requestEntity = new HttpEntity<>(settings, headers);
+        return restTemplate.postForObject(url, requestEntity, Settings.class);
     }
 }
