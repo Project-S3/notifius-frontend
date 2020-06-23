@@ -1,11 +1,8 @@
-const NOTIFIUS_BACKEND_URL = "";
-
 const settingFormSubmitButtonID = "settings-form-submit";
 const settingServiceInputClass = "settings-service-checkbox";
-const settingNotificationSenderInputClass = "settings-notification-sender-checkbox";
 const settingNotificationSenderValueInputClass = "settings-notification-sender-input";
 
-document.getElementById(settingFormSubmitButtonID).onclick = () => {
+document.getElementById(settingFormSubmitButtonID).onclick = function() {
     const enableServices = [];
     const notificationSenders = {};
     for (const serviceCheckbox of document.getElementsByClassName(settingServiceInputClass)) {
@@ -30,3 +27,13 @@ document.getElementById(settingFormSubmitButtonID).onclick = () => {
         }
     });
  };
+
+const testNotificationButtonID = "test-notification-button";
+
+document.getElementById(testNotificationButtonID).onclick = function () {
+    fetch("/send-notification", {
+        method: "POST"
+    }).then(() => {
+        alert("Notification envoyée")
+    });
+};

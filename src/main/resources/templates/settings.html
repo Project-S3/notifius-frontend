@@ -27,7 +27,8 @@
                 <input style="display: inline-block;width:55%" th:id="${notifSender}+'Value'" class="form-control settings-notification-sender-input"
                        th:value="${settings.getNotificationSenders().getOrDefault(notifSender+'_SENDER','')}">
             </div>
-            <button id="settings-form-submit" class="btn btn-primary">Sauvegarder</button>
+            <input type="button" id="settings-form-submit" class="btn btn-primary" value="Sauvegarder">
+            <input type="button" id="test-notification-button" class="btn btn-primary" value="Testez vos nouveux paramètres !">
         </form>
     </div>
 
@@ -35,7 +36,7 @@
 
 </div>
 
-<script src="js/form.js"></script>
+<script src="/js/settings.js"></script>
 
 </body>
 </html>
