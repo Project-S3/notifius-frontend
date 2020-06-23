@@ -34,7 +34,7 @@
             <div th:each="notifSender : ${notificationSenders}" class="form-group">
                 <label th:text="${notifSender}" th:for="${notifSender}"></label>
                 <label>
-                    <input  class="label__checkbox form-control settings-service-checkbox" type="checkbox"
+                    <input  class="label__checkbox form-control" type="checkbox"
                             th:id="${notifSender}"
                             th:checked="${settings.getNotificationSenders().containsKey(notifSender+'_SENDER')}"/>
                     <span class="label__text">
