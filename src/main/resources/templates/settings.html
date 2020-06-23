@@ -28,7 +28,7 @@
                 </label>
 
             </div>
-            <HR>
+
             <label style="font-weight: bold">Modes d'envoi</label>
             <br/>
             <div th:each="notifSender : ${notificationSenders}" class="form-group">
@@ -49,8 +49,8 @@
                            th:value="${settings.getNotificationSenders().getOrDefault(notifSender+'_SENDER','')}">
                 </label>
             </div>
-            <input type="button" id="settings-form-submit" class="btn btn-primary" value="Sauvegarder">
-            <input type="button" id="test-notification-button" class="btn btn-primary" value="Tester vos nouveaux paramètres !">
+            <input type="button" id="settings-form-submit" class="btn notifius-button" value="Sauvegarder">
+            <input type="button" id="test-notification-button" class="btn notifius-button" value="Tester vos nouveaux paramètres !">
         </form>
     </div>
 

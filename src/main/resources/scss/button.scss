@@ -1,0 +1,14 @@
+@import "variables";
+
+.notifius-button {
+  background-color: $notifius-green;
+  border-color: $notifius-darkgreen;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffffff;
+
+  &:hover {
+    background-color: $notifius-darkgreen;
+    color: #ffffff;
+  }
+}

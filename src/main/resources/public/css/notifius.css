@@ -215,6 +215,18 @@
     opacity: 1;
   }
 }
+.notifius-button {
+  background-color: #00a759;
+  border-color: #067240;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+.notifius-button:hover {
+  background-color: #067240;
+  color: #ffffff;
+}
+
 .body-container {
   position: absolute;
   top: 0;
