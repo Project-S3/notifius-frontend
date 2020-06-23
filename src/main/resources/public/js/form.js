@@ -20,7 +20,7 @@ document.getElementById(settingFormSubmitButtonID).onclick = () => {
     }
     const settings = { enableServices, notificationSenders }
 
-    fetch("http://localhost:8080/settings", {
+    fetch("/settings", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(settings)
