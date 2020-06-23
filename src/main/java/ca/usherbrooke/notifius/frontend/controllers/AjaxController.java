@@ -1,6 +1,9 @@
 package ca.usherbrooke.notifius.frontend.controllers;
 
+import ca.usherbrooke.notifius.frontend.models.Notification;
+import ca.usherbrooke.notifius.frontend.models.NotificationSender;
 import ca.usherbrooke.notifius.frontend.models.Settings;
+import ca.usherbrooke.notifius.frontend.services.NotificationService;
 import ca.usherbrooke.notifius.frontend.services.SettingsService;
 import org.jasig.cas.client.authentication.AttributePrincipalImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +19,8 @@ public class AjaxController
 {
     @Autowired
     private SettingsService settingsService;
+    @Autowired
+    private NotificationService notificationService;
 
     @PostMapping("settings")
     public Settings settings(Principal principal, @RequestBody Settings settings)
@@ -24,5 +29,14 @@ public class AjaxController
         String userId = (String) details.get("cip");
 
         return settingsService.setSettings(userId, settings);
+    }
+
+    @PostMapping("send-notification")
+    public Notification sendNotification(Principal principal)
+    {
+        Map<String, Object> details = ((AttributePrincipalImpl) principal).getAttributes();
+        String userId = (String) details.get("cip");
+
+        return notificationService.sendTestNotification(userId);
     }
 }
