@@ -1,67 +1,13 @@
-.header-container {
-  z-index: 1000;
-  position: fixed;
-  height: 3rem;
-  width: 100%;
-  padding: 0.5rem 1rem;
-  box-shadow: 0 0.15rem 0.25rem #afafaf;
-  background: linear-gradient(90deg, #181818, #242424);
-}
-.header-container .logo {
-  position: relative;
-  height: 100%;
-  width: auto;
-  margin-right: 0.75rem;
-}
-.header-container .title {
-  margin: 0;
-  font-size: 2rem;
-  font-weight: 400;
-  color: #ffffff;
-}
+@import "variables";
 
-.sidenav-container {
-  position: fixed;
-  left: 0;
-  height: 100%;
-  width: 17rem;
-  padding-top: 1rem;
-  padding-left: 1rem;
-  box-shadow: 0 0 0.5rem #afafaf;
-}
-.sidenav-container a {
-  font-size: 1.25rem;
-  font-weight: bold;
-  color: gray;
-}
-.sidenav-container a:hover {
-  color: #067240;
-}
-.sidenav-container a.active {
-  color: #00a759;
-}
-.sidenav-container a.active:hover {
-  color: #067240;
-}
-
-@media screen and (max-width: 960px) {
-  .sidenav-container {
-    position: relative;
-    width: 100%;
-    padding: 0;
-  }
-}
-.notif-card-container {
-  margin: 1rem 0;
-  border-color: #00a759;
-}
+$circle-width: 1rem;
+$check-height: 1rem;
 
 .label__checkbox {
   display: none;
-  font-family: "Lato", monospace;
-  font-size: 1rem;
+  font-family: 'Lato', monospace;
+  font-size: $circle-width;
 }
-
 .label__check {
   display: inline-block;
   border-radius: 50%;
@@ -81,28 +27,24 @@
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-transition: border 0.3s ease;
-  transition: border 0.3s ease;
+  -webkit-transition: border .3s ease;
+  transition: border .3s ease;
 }
-
 .label__check i.icon {
   opacity: 0.2;
-  font-size: 1rem;
+  font-size: $check-height;
   color: transparent;
-  -webkit-transition: opacity 0.3s 0.1s ease;
-  transition: opacity 0.3s 0.1s ease;
+  -webkit-transition: opacity .3s .1s ease;
+  transition: opacity .3s .1s ease;
   -webkit-text-stroke: 3px rgba(0, 0, 0, 0.5);
 }
-
 .label__check:hover {
   border: 5px solid rgba(0, 0, 0, 0.2);
 }
-
 .label__checkbox:checked + .label__text .label__check {
   -webkit-animation: check 0.5s cubic-bezier(0.895, 0.03, 0.685, 0.22) 1 forwards;
   animation: check 0.5s cubic-bezier(0.895, 0.03, 0.685, 0.22) 1 forwards;
 }
-
 .label__checkbox:checked + .label__text .label__check .icon {
   opacity: 1;
   -webkit-transform: scale(0);
@@ -112,7 +54,6 @@
   -webkit-animation: icon 0.3s cubic-bezier(1, 0.008, 0.565, 1.65) 0.1s 1 forwards;
   animation: icon 0.3s cubic-bezier(1, 0.008, 0.565, 1.65) 0.1s 1 forwards;
 }
-
 .center {
   position: absolute;
   top: 50%;
@@ -120,7 +61,6 @@
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
-
 @-webkit-keyframes icon {
   from {
     opacity: 0;
@@ -168,14 +108,14 @@
   50% {
     width: 2em;
     height: 2em;
-    background: #00a759;
+    background: $notifius-green;
     border: 0;
     opacity: 0.6;
   }
   100% {
     width: 2em;
     height: 2em;
-    background: #00a759;
+    background: $notifius-green;
     border: 0;
     opacity: 1;
   }
@@ -203,37 +143,15 @@
   50% {
     width: 2em;
     height: 2em;
-    background: #00a759;
+    background: $notifius-green;
     border: 0;
     opacity: 0.6;
   }
   100% {
     width: 2em;
     height: 2em;
-    background: #00a759;
+    background: $notifius-green;
     border: 0;
     opacity: 1;
   }
 }
-.body-container {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  min-height: 100vh;
-  padding-top: 3rem;
-  padding-left: 17rem;
-}
-.body-container .content-container {
-  position: relative;
-  margin: 1rem;
-}
-
-@media screen and (max-width: 960px) {
-  .body-container {
-    position: relative;
-    padding: 3rem 0 0 0;
-  }
-}
-
-/*# sourceMappingURL=notifius.css.map */
