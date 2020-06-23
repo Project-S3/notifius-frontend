@@ -43,9 +43,13 @@ public class NotificationService
 
     public Notification sendTestNotification(@NotNull String userID)
     {
+        String jokeUrl = "https://sv443.net/jokeapi/v2/joke/Programming?blacklistFlags=nsfw,religious,political,racist,sexist&format=txt&type=single";
+        RestTemplate restTemplate2 = new RestTemplate();
+        String joke = restTemplate2.getForObject(jokeUrl, String.class);
+
         Notification notification = new Notification();
         notification.setTitle("Test de vos notifications");
-        notification.setContent("Test");
+        notification.setContent(joke);
         notification.setDate(dateFormat.format(new Date(System.currentTimeMillis())));
         notification.setService("TEST");
 
