@@ -1,0 +1,15 @@
+.settings-container {
+  .setting-row {
+    display: flex;
+
+    .setting-row__tag {
+      width: 15rem;
+    }
+    .setting-row__check {
+      margin-right: 3rem;
+    }
+    .setting-row__value {
+      width: 50rem;
+    }
+  }
+}

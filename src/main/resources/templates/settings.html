@@ -8,49 +8,57 @@
 <div class="body-container">
     <div th:replace="fragments/sidenav"></div>
 
-    <div class="content-container">
+    <div class="content-container settings-container">
         <form>
-            <label style="font-weight: bold;">Services : </label>
-            <br/>
-            <div th:each="service : ${services}" class="form-group">
+            <h1>Services</h1>
 
-                <label th:text="${service}" th:for="${service}"></label>
-                <label>
-                    <input  class="label__checkbox form-control settings-service-checkbox" type="checkbox"
-                            th:id="${service}"
-                            th:value="${service}"
-                            th:checked="${settings.getEnableServices().contains(service)}"/>
-                    <span class="label__text">
-                      <span class="label__check">
-                        <i class="fa fa-check icon"></i>
-                      </span>
-                    </span>
-                </label>
+            <div th:each="service : ${services}" class="form-group">
+                <div class="setting-row">
+                    <label class="setting-row__tag" th:text="${service}" th:for="${service}"></label>
+
+                    <label class="setting-row__check">
+                        <input class="label__checkbox form-control settings-service-checkbox" type="checkbox"
+                               th:id="${service}"
+                               th:value="${service}"
+                               th:checked="${settings.getEnableServices().contains(service)}"/>
+                        <span class="label__text">
+                          <span class="label__check">
+                            <i class="fa fa-check icon"></i>
+                          </span>
+                        </span>
+                    </label>
+                </div>
 
             </div>
 
-            <label style="font-weight: bold">Modes d'envoi</label>
-            <br/>
+            <h1>Modes d'envoi</h1>
+
             <div th:each="notifSender : ${notificationSenders}" class="form-group">
-                <label th:text="${notifSender}" th:for="${notifSender}"></label>
-                <label>
-                    <input  class="label__checkbox form-control" type="checkbox"
-                            th:id="${notifSender}"
-                            th:checked="${settings.getNotificationSenders().containsKey(notifSender+'_SENDER')}"/>
-                    <span class="label__text">
-                      <span class="label__check">
-                        <i class="fa fa-check icon"></i>
-                      </span>
-                    </span>
-                </label>
-                <label>
-                    <input th:id="${notifSender}+'Value'"
-                           class="form-control settings-notification-sender-input"
-                           th:value="${settings.getNotificationSenders().getOrDefault(notifSender+'_SENDER','')}">
-                </label>
+
+                <div class="setting-row">
+                    <label class="setting-row__tag" th:text="${notifSender}" th:for="${notifSender}"></label>
+
+                    <label class="setting-row__check">
+                        <input class="label__checkbox form-control" type="checkbox"
+                               th:id="${notifSender}"
+                               th:checked="${settings.getNotificationSenders().containsKey(notifSender+'_SENDER')}"/>
+                        <span class="label__text">
+                              <span class="label__check">
+                                <i class="fa fa-check icon"></i>
+                              </span>
+                            </span>
+                    </label>
+                    <label class="setting-row__value">
+                        <input th:id="${notifSender}+'Value'"
+                               class="form-control settings-notification-sender-input"
+                               th:value="${settings.getNotificationSenders().getOrDefault(notifSender+'_SENDER','')}">
+                    </label>
+
+                </div>
             </div>
             <input type="button" id="settings-form-submit" class="btn notifius-button" value="Sauvegarder">
-            <input type="button" id="test-notification-button" class="btn notifius-button" value="Tester vos nouveaux paramètres !">
+            <input type="button" id="test-notification-button" class="btn notifius-button"
+                   value="Tester vos nouveaux paramètres !">
         </form>
     </div>
 
