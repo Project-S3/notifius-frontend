@@ -3,6 +3,7 @@ const NOTIFIUS_BACKEND_URL = "";
 const settingFormSubmitButtonID = "settings-form-submit";
 const settingServiceInputClass = "settings-service-checkbox";
 const settingNotificationSenderInputClass = "settings-notification-sender-checkbox";
+const settingNotificationSenderValueInputClass = "settings-notification-sender-input";
 
 document.getElementById(settingFormSubmitButtonID).onclick = () => {
     const enableServices = [];
@@ -12,9 +13,9 @@ document.getElementById(settingFormSubmitButtonID).onclick = () => {
             enableServices.push(serviceCheckbox.value);
         }
     }
-    for (const notificationSenderInput of document.getElementsByClassName(settingNotificationSenderInputClass)) {
-        if (notificationSenderInput.value) {
-            notificationSenders[notificationSenderInput.name] = notificationSenderInput.value
+    for (const notificationSenderInput of document.getElementsByClassName(settingNotificationSenderValueInputClass)) {
+        if (notificationSenderInput.value && document.getElementById(notificationSenderInput.id.replace("Value","")).checked) {
+            notificationSenders[notificationSenderInput.id.replace("Value","_SENDER")] = notificationSenderInput.value
         }
     }
     const settings = { enableServices, notificationSenders }

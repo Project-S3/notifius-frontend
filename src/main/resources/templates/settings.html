@@ -22,9 +22,9 @@
             <br/>
             <div th:each="notifSender : ${notificationSenders}" class="form-group">
                 <label style="display: inline-block;width:30%" th:text="${notifSender}" th:for="${notifSender}"></label>
-                <input style="display: inline-block;width:10%" th:id="${notifSender}" type="checkbox" class="form-control"
+                <input style="display: inline-block;width:10%" th:id="${notifSender}" type="checkbox" class="form-control settings-notification-sender-checkbox"
                        th:checked="${settings.getNotificationSenders().containsKey(notifSender+'_SENDER')}">
-                <input style="display: inline-block;width:55%" th:id="${notifSender}+'Value'" class="form-control"
+                <input style="display: inline-block;width:55%" th:id="${notifSender}+'Value'" class="form-control settings-notification-sender-input"
                        th:value="${settings.getNotificationSenders().getOrDefault(notifSender+'_SENDER','')}">
             </div>
             <button id="settings-form-submit" class="btn btn-primary">Sauvegarder</button>
