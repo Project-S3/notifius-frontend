@@ -24,5 +24,9 @@ document.getElementById(settingFormSubmitButtonID).onclick = () => {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(settings)
-    }).then(r => console.log(r));
+    }).then(response => {
+        if (response.ok) {
+            location.reload();
+        }
+    });
  };
