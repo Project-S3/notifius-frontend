@@ -6,7 +6,7 @@ document.getElementById(settingFormSubmitButtonID).onclick = function() {
     const enableServices = [];
     const notificationSenders = {};
     for (const serviceCheckbox of document.getElementsByClassName(settingServiceInputClass)) {
-        if (serviceCheckbox.checked) {
+        if (serviceCheckbox.checked || serviceCheckbox.id == "TEST") {
             enableServices.push(serviceCheckbox.value);
         }
     }
