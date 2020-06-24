@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .header-container {
   z-index: 1000;
   position: fixed;
@@ -42,6 +43,21 @@
 }
 .sidenav-container a.active:hover {
   color: #067240;
+}
+.sidenav-container a:before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  margin-right: 0.75rem;
+}
+.sidenav-container a.notification-link:before {
+  content: "";
+  margin-right: 1.25rem;
+}
+.sidenav-container a.settings-link:before {
+  content: "";
+}
+.sidenav-container a.documentation-link {
+  content: "";
 }
 
 @media screen and (max-width: 960px) {

@@ -26,6 +26,25 @@ $sidenav-width: 17rem;
         color: $notifius-darkgreen;
       }
     }
+    &:before {
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      margin-right: 0.75rem;
+    }
+    &.notification-link {
+      &:before {
+        content: "\f0f3";
+        margin-right: 1.25rem;
+      }
+    }
+    &.settings-link  {
+      &:before {
+        content: "\f4fe";
+      }
+    }
+    &.documentation-link {
+      content: "\f02d";
+    }
   }
 }
 
