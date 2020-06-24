@@ -29,7 +29,6 @@ $sidenav-width: 17rem;
     &:before {
       font-family: "Font Awesome 5 Free";
       font-weight: 900;
-      margin-right: 0.75rem;
     }
     &.notification-link {
       &:before {
@@ -40,10 +39,14 @@ $sidenav-width: 17rem;
     &.settings-link  {
       &:before {
         content: "\f4fe";
+        margin-right: 0.75rem;
       }
     }
     &.documentation-link {
-      content: "\f02d";
+      &:before {
+        content: "\f02d";
+        margin-right: 1.25rem;
+      }
     }
   }
 }
