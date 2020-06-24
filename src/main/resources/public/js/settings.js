@@ -12,7 +12,7 @@ document.getElementById(settingFormSubmitButtonID).onclick = function() {
     }
     for (const notificationSenderInput of document.getElementsByClassName(settingNotificationSenderValueInputClass)) {
         if (notificationSenderInput.value && document.getElementById(notificationSenderInput.id.replace("Value","")).checked) {
-            notificationSenders[notificationSenderInput.id.replace("Value","_SENDER")] = notificationSenderInput.value
+            notificationSenders[notificationSenderInput.id.replace("Value","")] = notificationSenderInput.value
         }
     }
     const settings = { enableServices, notificationSenders }

@@ -33,15 +33,15 @@
 
             <h1>Modes d'envoi</h1>
 
-            <div th:each="notifSender : ${notificationSenders}" class="form-group">
+            <div th:each="notifSender : ${notificationSenders.keySet()}" class="form-group">
 
                 <div class="setting-row">
-                    <label class="setting-row__tag" th:text="${notifSender}" th:for="${notifSender}"></label>
+                    <label class="setting-row__tag" th:text="${notificationSenders.get(notifSender)}" th:for="${notifSender}"></label>
 
                     <label class="setting-row__check">
                         <input class="label__checkbox form-control" type="checkbox"
                                th:id="${notifSender}"
-                               th:checked="${settings.getNotificationSenders().containsKey(notifSender+'_SENDER')}"/>
+                               th:checked="${settings.getNotificationSenders().containsKey(notifSender)}"/>
                         <span class="label__text">
                               <span class="label__check">
                                 <i class="fa fa-check icon"></i>
@@ -51,7 +51,7 @@
                     <label class="setting-row__value">
                         <input th:id="${notifSender}+'Value'"
                                class="form-control settings-notification-sender-input"
-                               th:value="${settings.getNotificationSenders().getOrDefault(notifSender+'_SENDER','')}">
+                               th:value="${settings.getNotificationSenders().getOrDefault(notifSender,'')}">
                     </label>
 
                 </div>

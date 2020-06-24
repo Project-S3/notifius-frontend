@@ -38,9 +38,15 @@ public class NotificationService
                                                                         userID),
                                                           Notification[].class,
                                                           param);
-        ArrayList<Notification> notifList = new ArrayList<>(Arrays.asList(result)) ;
-        notifList.sort(Notification.getDateComparator().reversed());
-        return notifList;
+        if(result != null)
+        {
+            ArrayList<Notification> notifList = new ArrayList<>(Arrays.asList(result)) ;
+            notifList.sort(Notification.getDateComparator().reversed());
+            return notifList;
+        }
+
+        return new ArrayList<>();
+
     }
 
     public Notification sendTestNotification(@NotNull String userID)

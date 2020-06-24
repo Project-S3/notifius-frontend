@@ -11,9 +11,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.security.Principal;
 import java.text.DateFormat;
@@ -23,8 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-public class NotifiusController
-{
+public class NotifiusController {
     private static final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
     private static final DateFormat displayDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
@@ -39,14 +35,13 @@ public class NotifiusController
     private String notifiusBaseEndpoint;
 
     @GetMapping("/")
-    public String notification(Principal principal ,Model model)
-    {
+    public String notification(Principal principal, Model model) {
         Map<String, Object> details = ((AttributePrincipalImpl) principal).getAttributes();
         String userId = (String) details.get("cip");
 
         List<Notification> notifications = notificationService.getAllNotification(userId,
-                                                                                  null,
-                                                                                  null);
+                null,
+                null);
         model.addAttribute("isNotification", true);
         model.addAttribute("isSettings", false);
 
@@ -67,8 +62,7 @@ public class NotifiusController
     }
 
     @GetMapping("settings")
-    public String settings(Principal principal, Model model)
-    {
+    public String settings(Principal principal, Model model) {
         Map<String, Object> details = ((AttributePrincipalImpl) principal).getAttributes();
         String userId = (String) details.get("cip");
 
@@ -81,10 +75,8 @@ public class NotifiusController
         String[] services = settingsService.getServices();
         model.addAttribute("services", services);
 
-        String[] notificationSenders = settingsService.getNotificationSenders();
-        for (int i=0; i<notificationSenders.length; i++){
-            notificationSenders[i] = notificationSenders[i].replace("_SENDER","");
-        }
+        NotificationSender notificationSenders = settingsService.getNotificationSenders();
+
         model.addAttribute("notificationSenders", notificationSenders);
 
         model.addAttribute("body", "");

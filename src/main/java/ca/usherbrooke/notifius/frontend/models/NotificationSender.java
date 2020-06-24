@@ -1,23 +1,7 @@
 package ca.usherbrooke.notifius.frontend.models;
 
-public class NotificationSender
-{
-    private String name;
-    private String value;
+import java.util.HashMap;
 
-    public String getName() {
-        return name;
-    }
+public class NotificationSender extends HashMap<String, String>{
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
 }
