@@ -2,17 +2,17 @@ package ca.usherbrooke.notifius.frontend.services;
 
 import ca.usherbrooke.notifius.frontend.models.NotificationSender;
 import ca.usherbrooke.notifius.frontend.models.Settings;
+import ca.usherbrooke.notifius.frontend.models.Service;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
-import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import javax.validation.constraints.NotNull;
 
-@Service
+@org.springframework.stereotype.Service
 public class SettingsService
 {
 
@@ -38,11 +38,11 @@ public class SettingsService
                                                        notifiusBaseEndpoint), NotificationSender.class);
     }
 
-    public String[] getServices()
+    public Service getServices()
     {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.getForObject(String.format(SERVICES_URL_FORMAT,
-                                                       notifiusBaseEndpoint), String[].class);
+                                                       notifiusBaseEndpoint), Service.class);
     }
 
     public Settings setSettings(String userID, Settings settings)

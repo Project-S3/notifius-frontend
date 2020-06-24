@@ -3,6 +3,7 @@ package ca.usherbrooke.notifius.frontend.controllers;
 import ca.usherbrooke.notifius.frontend.models.Notification;
 import ca.usherbrooke.notifius.frontend.models.NotificationSender;
 import ca.usherbrooke.notifius.frontend.models.Settings;
+import ca.usherbrooke.notifius.frontend.models.Service;
 import ca.usherbrooke.notifius.frontend.services.NotificationService;
 import ca.usherbrooke.notifius.frontend.services.SettingsService;
 import org.jasig.cas.client.authentication.AttributePrincipalImpl;
@@ -74,7 +75,7 @@ public class NotifiusController {
         Settings settings = settingsService.getSettings(userId);
         model.addAttribute("settings", settings);
 
-        String[] services = settingsService.getServices();
+        Service services = settingsService.getServices();
         model.addAttribute("services", services);
 
         NotificationSender notificationSenders = settingsService.getNotificationSenders();

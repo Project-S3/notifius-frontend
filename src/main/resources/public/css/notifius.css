@@ -93,6 +93,11 @@
   width: 100%;
   background-color: rgba(0, 167, 89, 0.07);
 }
+.settings-container .setting-row .setting-row__description {
+  flex: 1;
+  font-size: 0.9rem;
+  color: #067240;
+}
 .settings-container .buttons-container {
   margin-top: 3rem;
 }

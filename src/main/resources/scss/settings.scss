@@ -28,6 +28,11 @@
         background-color: $notifius-green-transparent;
       }
     }
+    .setting-row__description {
+      flex: 1;
+      font-size: 0.9rem;
+      color: $notifius-darkgreen;
+    }
   }
 
   .buttons-container {

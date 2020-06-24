@@ -14,13 +14,13 @@
 
             <div class="jumbotron shadow">
                 <h1>Services</h1>
-                <p class="lead">Les service sont les systèmes qui peuvent vous envoyer des notifications</p>
+                <p class="lead">Choisissez les services dont vous voulez recevoir des notifications</p>
                 <hr class="my-4">
 
-                <div th:each="service : ${services}" class="form-group">
+                <div th:each="service : ${services.keySet()}" class="form-group">
                     <div class="setting-row">
                         <div class="setting-row__label">
-                            <label class="setting-row__tag" th:text="${service}" th:for="${service}"></label>
+                            <label class="setting-row__tag" th:text="${services.get(service)[0]}" th:for="${service}"></label>
 
                             <label class="setting-row__check">
                                 <input class="label__checkbox form-control settings-service-checkbox" type="checkbox"
@@ -34,6 +34,7 @@
                                 </span>
                             </label>
                         </div>
+                        <label class="setting-row__description" th:text="${services.get(service)[1]}" ></label>
                     </div>
 
                 </div>
@@ -44,7 +45,7 @@
 
             <div class="jumbotron shadow">
                 <h1>Modes d'envoi</h1>
-                <p class="lead">Les modes d'envoie son les place où les notifications seront envoyées</p>
+                <p class="lead">Choisissez via quelles plateformes vous voulez recevoir vos notifications</p>
                 <hr class="my-4">
 
                 <div th:each="notifSender : ${notificationSenders.keySet()}" class="form-group">
