@@ -19,19 +19,21 @@
 
                 <div th:each="service : ${services}" class="form-group">
                     <div class="setting-row">
-                        <label class="setting-row__tag" th:text="${service}" th:for="${service}"></label>
+                        <div class="setting-row__label">
+                            <label class="setting-row__tag" th:text="${service}" th:for="${service}"></label>
 
-                        <label class="setting-row__check">
-                            <input class="label__checkbox form-control settings-service-checkbox" type="checkbox"
-                                   th:id="${service}"
-                                   th:value="${service}"
-                                   th:checked="${settings.getEnableServices().contains(service)}"/>
-                            <span class="label__text">
-                              <span class="label__check">
-                                <i class="fa fa-check icon"></i>
-                              </span>
-                            </span>
-                        </label>
+                            <label class="setting-row__check">
+                                <input class="label__checkbox form-control settings-service-checkbox" type="checkbox"
+                                       th:id="${service}"
+                                       th:value="${service}"
+                                       th:checked="${settings.getEnableServices().contains(service)}"/>
+                                <span class="label__text">
+                                  <span class="label__check">
+                                    <i class="fa fa-check icon"></i>
+                                  </span>
+                                </span>
+                            </label>
+                        </div>
                     </div>
 
                 </div>
@@ -48,18 +50,20 @@
                 <div th:each="notifSender : ${notificationSenders.keySet()}" class="form-group">
 
                     <div class="setting-row">
-                        <label class="setting-row__tag" th:text="${notificationSenders.get(notifSender)}" th:for="${notifSender}"></label>
+                        <div class="setting-row__label">
+                            <label class="setting-row__tag" th:text="${notificationSenders.get(notifSender)}" th:for="${notifSender}"></label>
+                            <label class="setting-row__check">
 
-                        <label class="setting-row__check">
-                            <input class="label__checkbox form-control" type="checkbox"
-                                   th:id="${notifSender}"
-                                   th:checked="${settings.getNotificationSenders().containsKey(notifSender)}"/>
-                            <span class="label__text">
-                          <span class="label__check">
-                            <i class="fa fa-check icon"></i>
-                          </span>
-                        </span>
-                        </label>
+                                <input class="label__checkbox form-control" type="checkbox"
+                                       th:id="${notifSender}"
+                                       th:checked="${settings.getNotificationSenders().containsKey(notifSender)}"/>
+                                <span class="label__text">
+                                  <span class="label__check">
+                                    <i class="fa fa-check icon"></i>
+                                  </span>
+                                </span>
+                            </label>
+                        </div>
                         <label class="setting-row__value">
                             <input th:id="${notifSender}+'Value'"
                                    class="form-control settings-notification-sender-input notifius-textfield"
