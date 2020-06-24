@@ -102,13 +102,18 @@
 .settings-container .jumbotron {
   background-color: #ffffff;
 }
+.settings-container .jumbotron h1 {
+  font-weight: lighter;
+  font-size: 3rem;
+  color: #067240;
+}
 .settings-container .jumbotron hr {
   color: #067240;
 }
 
 @media screen and (max-width: 960px) {
   .settings-container {
-    padding-bottom: 0;
+    padding-bottom: 1rem;
   }
   .settings-container .setting-row {
     flex-direction: column;
