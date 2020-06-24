@@ -1,0 +1,13 @@
+@import "variables";
+
+.notifius-textfield {
+  border-color: $notifius-green;
+  color: $notifius-darkgreen;
+
+
+  &:focus {
+    outline: 0 none;
+    border-color: $notifius-green;
+    box-shadow: 0 0 5px $notifius-green;
+  }
+}

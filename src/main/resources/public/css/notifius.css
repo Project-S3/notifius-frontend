@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .header-container {
   z-index: 1000;
   position: fixed;
@@ -43,6 +44,22 @@
 .sidenav-container a.active:hover {
   color: #067240;
 }
+.sidenav-container a:before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}
+.sidenav-container a.notification-link:before {
+  content: "";
+  margin-right: 1.25rem;
+}
+.sidenav-container a.settings-link:before {
+  content: "";
+  margin-right: 0.75rem;
+}
+.sidenav-container a.documentation-link:before {
+  content: "";
+  margin-right: 1.25rem;
+}
 
 @media screen and (max-width: 960px) {
   .sidenav-container {
@@ -58,7 +75,7 @@
   width: 15rem;
 }
 .settings-container .setting-row .setting-row__check {
-  margin-right: 5rem;
+  margin-right: 3rem;
 }
 .settings-container .setting-row .setting-row__value {
   width: 50rem;
@@ -67,6 +84,15 @@
 .notif-card-container {
   margin: 1rem 0;
   border-color: #00a759;
+}
+.notif-card-container .card-header {
+  background-color: rgba(0, 167, 89, 0.07);
+  color: #067240;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+.notif-card-container .card-body {
+  font-size: 1.25rem;
 }
 
 .label__checkbox {
@@ -238,6 +264,16 @@
 .notifius-button:hover {
   background-color: #067240;
   color: #ffffff;
+}
+
+.notifius-textfield {
+  border-color: #00a759;
+  color: #067240;
+}
+.notifius-textfield:focus {
+  outline: 0 none;
+  border-color: #00a759;
+  box-shadow: 0 0 5px #00a759;
 }
 
 .body-container {
