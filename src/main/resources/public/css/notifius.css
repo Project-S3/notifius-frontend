@@ -68,6 +68,10 @@
     padding: 0;
   }
 }
+.settings-container {
+  padding-bottom: 5rem;
+  background-color: rgba(0, 167, 89, 0.07);
+}
 .settings-container .setting-row {
   display: flex;
 }
@@ -79,6 +83,9 @@
 }
 .settings-container .setting-row .setting-row__value {
   width: 50rem;
+}
+.settings-container .jumbotron {
+  background-color: #ffffff;
 }
 
 .notif-card-container {

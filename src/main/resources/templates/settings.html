@@ -12,55 +12,64 @@
         <form>
 
 
+            <div class="jumbotron shadow">
+                <h1 class="display-4">Services</h1>
+                <p class="lead">Les service sont les systèmes qui peuvent vous envoyer des notifications</p>
+                <hr class="my-4">
 
-            <h1>Services</h1>
+                <div th:each="service : ${services}" class="form-group">
+                    <div class="setting-row">
+                        <label class="setting-row__tag" th:text="${service}" th:for="${service}"></label>
 
-            <div th:each="service : ${services}" class="form-group">
-                <div class="setting-row">
-                    <label class="setting-row__tag" th:text="${service}" th:for="${service}"></label>
+                        <label class="setting-row__check">
+                            <input class="label__checkbox form-control settings-service-checkbox" type="checkbox"
+                                   th:id="${service}"
+                                   th:value="${service}"
+                                   th:checked="${settings.getEnableServices().contains(service)}"/>
+                            <span class="label__text">
+                              <span class="label__check">
+                                <i class="fa fa-check icon"></i>
+                              </span>
+                            </span>
+                        </label>
+                    </div>
 
-                    <label class="setting-row__check">
-                        <input class="label__checkbox form-control settings-service-checkbox" type="checkbox"
-                               th:id="${service}"
-                               th:value="${service}"
-                               th:checked="${settings.getEnableServices().contains(service)}"/>
-                        <span class="label__text">
+                </div>
+            </div>
+
+
+
+
+            <div class="jumbotron shadow">
+                <h1 class="display-4">Modes d'envoi</h1>
+                <p class="lead">Les modes d'envoie son les place où les notifications seront envoyées</p>
+                <hr class="my-4">
+
+                <div th:each="notifSender : ${notificationSenders.keySet()}" class="form-group">
+
+                    <div class="setting-row">
+                        <label class="setting-row__tag" th:text="${notificationSenders.get(notifSender)}" th:for="${notifSender}"></label>
+
+                        <label class="setting-row__check">
+                            <input class="label__checkbox form-control" type="checkbox"
+                                   th:id="${notifSender}"
+                                   th:checked="${settings.getNotificationSenders().containsKey(notifSender)}"/>
+                            <span class="label__text">
                           <span class="label__check">
                             <i class="fa fa-check icon"></i>
                           </span>
                         </span>
-                    </label>
-                </div>
+                        </label>
+                        <label class="setting-row__value">
+                            <input th:id="${notifSender}+'Value'"
+                                   class="form-control settings-notification-sender-input notifius-textfield"
+                                   th:value="${settings.getNotificationSenders().getOrDefault(notifSender,'')}">
+                        </label>
 
-            </div>
-
-
-
-            <h1>Modes d'envoi</h1>
-
-            <div th:each="notifSender : ${notificationSenders.keySet()}" class="form-group">
-
-                <div class="setting-row">
-                    <label class="setting-row__tag" th:text="${notificationSenders.get(notifSender)}" th:for="${notifSender}"></label>
-
-                    <label class="setting-row__check">
-                        <input class="label__checkbox form-control" type="checkbox"
-                               th:id="${notifSender}"
-                               th:checked="${settings.getNotificationSenders().containsKey(notifSender)}"/>
-                        <span class="label__text">
-                          <span class="label__check">
-                            <i class="fa fa-check icon"></i>
-                          </span>
-                        </span>
-                    </label>
-                    <label class="setting-row__value">
-                        <input th:id="${notifSender}+'Value'"
-                               class="form-control settings-notification-sender-input notifius-textfield"
-                               th:value="${settings.getNotificationSenders().getOrDefault(notifSender,'')}">
-                    </label>
-
+                    </div>
                 </div>
             </div>
+
 
 
             <input type="button" id="settings-form-submit" class="btn notifius-button" value="Sauvegarder">

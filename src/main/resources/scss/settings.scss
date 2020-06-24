@@ -1,4 +1,8 @@
+@import "variables";
+
 .settings-container {
+  padding-bottom: 5rem;
+  background-color: $notifius-green-transparent;
   .setting-row {
     display: flex;
 
@@ -11,5 +15,10 @@
     .setting-row__value {
       width: 50rem;
     }
+  }
+
+  .jumbotron {
+    background-color: #ffffff;
+
   }
 }
