@@ -58,7 +58,7 @@
   width: 15rem;
 }
 .settings-container .setting-row .setting-row__check {
-  margin-right: 5rem;
+  margin-right: 3rem;
 }
 .settings-container .setting-row .setting-row__value {
   width: 50rem;
@@ -238,6 +238,16 @@
 .notifius-button:hover {
   background-color: #067240;
   color: #ffffff;
+}
+
+.notifius-textfield {
+  border-color: #00a759;
+  color: #067240;
+}
+.notifius-textfield:focus {
+  outline: 0 none;
+  border-color: #00a759;
+  box-shadow: 0 0 5px #00a759;
 }
 
 .body-container {

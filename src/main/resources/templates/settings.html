@@ -10,6 +10,9 @@
 
     <div class="content-container settings-container">
         <form>
+
+
+
             <h1>Services</h1>
 
             <div th:each="service : ${services}" class="form-group">
@@ -31,6 +34,8 @@
 
             </div>
 
+
+
             <h1>Modes d'envoi</h1>
 
             <div th:each="notifSender : ${notificationSenders}" class="form-group">
@@ -43,19 +48,21 @@
                                th:id="${notifSender}"
                                th:checked="${settings.getNotificationSenders().containsKey(notifSender+'_SENDER')}"/>
                         <span class="label__text">
-                              <span class="label__check">
-                                <i class="fa fa-check icon"></i>
-                              </span>
-                            </span>
+                          <span class="label__check">
+                            <i class="fa fa-check icon"></i>
+                          </span>
+                        </span>
                     </label>
                     <label class="setting-row__value">
                         <input th:id="${notifSender}+'Value'"
-                               class="form-control settings-notification-sender-input"
+                               class="form-control settings-notification-sender-input notifius-textfield"
                                th:value="${settings.getNotificationSenders().getOrDefault(notifSender+'_SENDER','')}">
                     </label>
 
                 </div>
             </div>
+
+
             <input type="button" id="settings-form-submit" class="btn notifius-button" value="Sauvegarder">
             <input type="button" id="test-notification-button" class="btn notifius-button"
                    value="Tester vos nouveaux paramètres !">
