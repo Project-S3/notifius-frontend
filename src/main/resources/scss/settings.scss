@@ -7,18 +7,33 @@
     display: flex;
 
     .setting-row__tag {
+      flex: inherit;
       width: 15rem;
     }
     .setting-row__check {
+      flex: inherit;
       margin-right: 3rem;
     }
     .setting-row__value {
-      width: 50rem;
+      flex: 1;
+      input {
+        width: 100%;
+        background-color: $notifius-green-transparent;
+      }
+    }
+  }
+
+  .buttons-container {
+    margin-top: 3rem;
+    input {
+      margin-right: 0.5rem;
     }
   }
 
   .jumbotron {
     background-color: #ffffff;
-
+    hr {
+      color: $notifius-darkgreen;
+    }
   }
 }
