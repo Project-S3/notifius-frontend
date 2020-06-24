@@ -85,6 +85,15 @@
   margin: 1rem 0;
   border-color: #00a759;
 }
+.notif-card-container .card-header {
+  background-color: rgba(0, 167, 89, 0.07);
+  color: #067240;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+.notif-card-container .card-body {
+  font-size: 1.25rem;
+}
 
 .label__checkbox {
   display: none;

@@ -3,5 +3,13 @@
 .notif-card-container {
   margin: 1rem 0;
   border-color: $notifius-green;
-
+  .card-header {
+    background-color: $notifius-green-transparent;
+    color: $notifius-darkgreen;
+    font-weight: bold;
+    font-size: 1.3rem;
+  }
+  .card-body {
+    font-size: 1.25rem;
+  }
 }
