@@ -9,8 +9,8 @@
                href="#" th:href="@{/settings}">Paramètre</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link documentation-link"
-               href="#" >Documentation</a>
+            <a class="nav-link documentation-link" th:classappend="${isDocumentation} ? active : ''"
+               href="#" th:href="@{/documentation}">Documentation</a>
         </li>
     </ul>
 </div>
