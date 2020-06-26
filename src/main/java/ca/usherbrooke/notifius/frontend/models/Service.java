@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020. Universitée de Sherbrooke, All rights reserved.
+ */
+
 package ca.usherbrooke.notifius.frontend.models;
 
 public class Service

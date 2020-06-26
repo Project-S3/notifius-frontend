@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020. Universitée de Sherbrooke, All rights reserved.
+ */
+
 const settingFormSubmitButtonID = "settings-form-submit";
 const settingServiceInputClass = "settings-service-checkbox";
 const settingNotificationSenderValueInputClass = "settings-notification-sender-input";
