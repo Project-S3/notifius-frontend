@@ -57,7 +57,7 @@ public class NotificationService
         notification.setTitle("Test de vos notifications");
         notification.setContent(joke);
         notification.setDate(dateFormat.format(new Date(System.currentTimeMillis())));
-        notification.setService("TEST");
+        notification.setService("NOTIFIUS");
 
         RestTemplate restTemplate = new RestTemplate();
         String url = String.format(NOTIFICATION_POST_URL_FORMAT,
