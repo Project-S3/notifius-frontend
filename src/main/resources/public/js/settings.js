@@ -2,21 +2,20 @@ const settingFormSubmitButtonID = "settings-form-submit";
 const settingServiceInputClass = "settings-service-checkbox";
 const settingNotificationSenderValueInputClass = "settings-notification-sender-input";
 
-document.getElementById(settingFormSubmitButtonID).onclick = function() {
+document.getElementById(settingFormSubmitButtonID).onclick = function () {
     const enableServices = [];
     const notificationSenders = {};
     for (const serviceCheckbox of document.getElementsByClassName(settingServiceInputClass)) {
-        // if (serviceCheckbox.checked || serviceCheckbox.id === "TEST") {
         if (serviceCheckbox.checked) {
             enableServices.push(serviceCheckbox.value);
         }
     }
     for (const notificationSenderInput of document.getElementsByClassName(settingNotificationSenderValueInputClass)) {
-        if (notificationSenderInput.value && document.getElementById(notificationSenderInput.id.replace("Value","")).checked) {
-            notificationSenders[notificationSenderInput.id.replace("Value","")] = notificationSenderInput.value
+        if (notificationSenderInput.value && document.getElementById(notificationSenderInput.id.replace("Value", "")).checked) {
+            notificationSenders[notificationSenderInput.id.replace("Value", "")] = notificationSenderInput.value
         }
     }
-    const settings = { enableServices, notificationSenders }
+    const settings = {enableServices, notificationSenders}
 
     fetch("/settings", {
         method: "POST",
@@ -27,7 +26,7 @@ document.getElementById(settingFormSubmitButtonID).onclick = function() {
             location.reload();
         }
     });
- };
+};
 
 const testNotificationButtonID = "test-notification-button";
 
@@ -38,5 +37,3 @@ document.getElementById(testNotificationButtonID).onclick = function () {
         alert("Notification envoyée")
     });
 };
-
-// document.getElementById('TEST').disabled = true;

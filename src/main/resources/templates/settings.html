@@ -17,18 +17,18 @@
                 <p class="lead">Choisissez les services dont vous voulez recevoir des notifications</p>
                 <hr class="my-4">
 
-                <div th:each="service : ${services}" class="form-group">
+                <div class="form-group" th:each="service : ${services}">
                     <div class="setting-row">
                         <div class="setting-row__label">
                             <label class="setting-row__tag"
-                                   th:text="${service.getDisplayName()}"
-                                   th:for="${service.getId()}"></label>
+                                   th:for="${service.getId()}"
+                                   th:text="${service.getDisplayName()}"></label>
 
                             <label class="setting-row__check">
-                                <input class="label__checkbox form-control settings-service-checkbox" type="checkbox"
+                                <input class="label__checkbox form-control settings-service-checkbox" th:checked="${settings.getEnableServices().contains(service.getId())}"
                                        th:id="${service.getId()}"
                                        th:value="${service.getId()}"
-                                       th:checked="${settings.getEnableServices().contains(service.getId())}"/>
+                                       type="checkbox"/>
                                 <span class="label__text">
                                   <span class="label__check">
                                     <i class="fa fa-check icon"></i>
@@ -36,13 +36,11 @@
                                 </span>
                             </label>
                         </div>
-                        <label class="setting-row__description" th:text="${service.getDescription()}" ></label>
+                        <label class="setting-row__description" th:text="${service.getDescription()}"></label>
                     </div>
 
                 </div>
             </div>
-
-
 
 
             <div class="jumbotron shadow">
@@ -50,16 +48,17 @@
                 <p class="lead">Choisissez via quelles plateformes vous voulez recevoir vos notifications</p>
                 <hr class="my-4">
 
-                <div th:each="notifSender : ${notificationSenders}" class="form-group">
+                <div class="form-group" th:each="notifSender : ${notificationSenders}">
 
                     <div class="setting-row">
                         <div class="setting-row__label">
-                            <label class="setting-row__tag" th:text="${notifSender.getDisplayName()}" th:for="${notifSender.getId()}"></label>
+                            <label class="setting-row__tag" th:for="${notifSender.getId()}"
+                                   th:text="${notifSender.getDisplayName()}"></label>
                             <label class="setting-row__check">
 
-                                <input class="label__checkbox form-control" type="checkbox"
+                                <input class="label__checkbox form-control" th:checked="${settings.getNotificationSenders().containsKey(notifSender.getId())}"
                                        th:id="${notifSender.getId()}"
-                                       th:checked="${settings.getNotificationSenders().containsKey(notifSender.getId())}"/>
+                                       type="checkbox"/>
                                 <span class="label__text">
                                   <span class="label__check">
                                     <i class="fa fa-check icon"></i>
@@ -68,8 +67,8 @@
                             </label>
                         </div>
                         <label class="setting-row__value">
-                            <input th:id="${notifSender.getId()} + 'Value'"
-                                   class="form-control settings-notification-sender-input notifius-textfield"
+                            <input class="form-control settings-notification-sender-input notifius-textfield"
+                                   th:id="${notifSender.getId()} + 'Value'"
                                    th:value="${settings.getNotificationSenders().getOrDefault(notifSender.getId(),'')}">
                         </label>
 
@@ -79,8 +78,8 @@
 
 
             <div class="buttons-container">
-                <input type="button" id="settings-form-submit" class="btn notifius-button" value="Sauvegarder">
-                <input type="button" id="test-notification-button" class="btn notifius-button"
+                <input class="btn notifius-button" id="settings-form-submit" type="button" value="Sauvegarder">
+                <input class="btn notifius-button" id="test-notification-button" type="button"
                        value="Tester vos nouveaux paramètres !">
             </div>
         </form>

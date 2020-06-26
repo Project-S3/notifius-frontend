@@ -54,7 +54,8 @@ public class SettingsService
                                                                                      notifiusBaseEndpoint),
                                                                        NotificationSender[].class);
         return senders == null ? new ArrayList<>() : Arrays.stream(senders)
-                                                           .sorted(Comparator.comparing(NotificationSender::getDisplayName))
+                                                           .sorted(Comparator.comparing(
+                                                                   NotificationSender::getDisplayName))
                                                            .collect(Collectors.toList());
     }
 

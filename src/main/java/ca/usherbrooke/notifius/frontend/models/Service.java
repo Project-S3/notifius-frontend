@@ -1,6 +1,6 @@
 package ca.usherbrooke.notifius.frontend.models;
 
-public class Service implements Comparable<Service>
+public class Service
 {
     private String id;
     private String displayName;
@@ -34,12 +34,5 @@ public class Service implements Comparable<Service>
     public void setDescription(String description)
     {
         this.description = description;
-    }
-
-    @Override
-    public int compareTo(Service o)
-    {
-        if (o == null) return 0;
-        return this.displayName.compareTo(o.displayName);
     }
 }

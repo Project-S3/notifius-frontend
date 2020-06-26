@@ -8,7 +8,8 @@
     <div class="card-body">
         <p class="card-text text-justify" th:text="${notification.getContent()}"></p>
         <p class="card-text">
-            <small class="text-muted" th:text="'Sent by ' + ${notification.getService()} + ' service at ' + ${notification.getDate()}"></small>
+            <small class="text-muted"
+                   th:text="'Sent by ' + ${notification.getService()} + ' service at ' + ${notification.getDate()}"></small>
         </p>
     </div>
 </div>

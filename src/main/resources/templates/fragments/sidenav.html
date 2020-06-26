@@ -1,16 +1,16 @@
 <div class="sidenav-container" xmlns:th="http://www.w3.org/1999/xhtml">
     <ul class="nav flex-column">
         <li class="nav-item">
-            <a class="nav-link notification-link" th:classappend="${isNotification} ? active : ''"
-               href="#" th:href="@{/}">Notifications</a>
+            <a class="nav-link notification-link" href="#"
+               th:classappend="${isNotification} ? active : ''" th:href="@{/}">Notifications</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link settings-link" th:classappend="${isSettings} ? active : ''"
-               href="#" th:href="@{/settings}">Paramètres</a>
+            <a class="nav-link settings-link" href="#"
+               th:classappend="${isSettings} ? active : ''" th:href="@{/settings}">Paramètres</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link documentation-link" th:classappend="${isDocumentation} ? active : ''"
-               href="#" th:href="@{/documentation}">Documentation</a>
+            <a class="nav-link documentation-link" href="#"
+               th:classappend="${isDocumentation} ? active : ''" th:href="@{/documentation}">Documentation</a>
         </li>
     </ul>
 </div>

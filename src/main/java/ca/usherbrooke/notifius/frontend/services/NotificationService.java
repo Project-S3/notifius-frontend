@@ -11,6 +11,7 @@ import javax.validation.constraints.NotNull;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class NotificationService
@@ -23,6 +24,8 @@ public class NotificationService
 
     private static final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 
+    @Value("${joke.url}")
+    private String jokeUrl;
     @Value("${notifius.backend.base-url}")
     private String notifiusBaseEndpoint;
 
@@ -38,20 +41,15 @@ public class NotificationService
                                                                         userID),
                                                           Notification[].class,
                                                           param);
-        if(result != null)
-        {
-            ArrayList<Notification> notifList = new ArrayList<>(Arrays.asList(result)) ;
-            notifList.sort(Notification.getDateComparator().reversed());
-            return notifList;
-        }
 
-        return new ArrayList<>();
-
+        return result == null ? new ArrayList<>() : Arrays.stream(result)
+                                                          .sorted(Comparator.comparing(Notification::getDate)
+                                                                            .reversed())
+                                                          .collect(Collectors.toList());
     }
 
     public Notification sendTestNotification(@NotNull String userID)
     {
-        String jokeUrl = "https://sv443.net/jokeapi/v2/joke/Programming?blacklistFlags=nsfw,religious,political,racist,sexist&format=txt&type=single";
         RestTemplate restTemplate2 = new RestTemplate();
         String joke = restTemplate2.getForObject(jokeUrl, String.class);
 
@@ -63,8 +61,8 @@ public class NotificationService
 
         RestTemplate restTemplate = new RestTemplate();
         String url = String.format(NOTIFICATION_POST_URL_FORMAT,
-                notifiusBaseEndpoint,
-                userID);
+                                   notifiusBaseEndpoint,
+                                   userID);
 
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json");
