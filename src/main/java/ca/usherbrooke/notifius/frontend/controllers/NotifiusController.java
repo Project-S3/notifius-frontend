@@ -47,7 +47,6 @@ public class NotifiusController {
         model.addAttribute("isSettings", false);
         model.addAttribute("isDocumentation", false);
 
-
         notifications.forEach(n -> {
             try {
 
@@ -72,17 +71,9 @@ public class NotifiusController {
         model.addAttribute("isNotification", false);
         model.addAttribute("isDocumentation", false);
 
-        Settings settings = settingsService.getSettings(userId);
-        model.addAttribute("settings", settings);
-
-        Service services = settingsService.getServices();
-        model.addAttribute("services", services);
-
-        NotificationSender notificationSenders = settingsService.getNotificationSenders();
-
-        model.addAttribute("notificationSenders", notificationSenders);
-
-        model.addAttribute("body", "");
+        model.addAttribute("settings", settingsService.getSettingsForUser(userId));
+        model.addAttribute("services", settingsService.getAllServices());
+        model.addAttribute("notificationSenders", settingsService.getAllNotificationSenders());
 
         return "settings";
     }
@@ -90,9 +81,6 @@ public class NotifiusController {
     @GetMapping("documentation")
     public String documentation(Principal principal, Model model)
     {
-        Map<String, Object> details = ((AttributePrincipalImpl) principal).getAttributes();
-        String userId = (String) details.get("cip");
-
         model.addAttribute("isSettings", false);
         model.addAttribute("isNotification", false);
         model.addAttribute("isDocumentation", true);

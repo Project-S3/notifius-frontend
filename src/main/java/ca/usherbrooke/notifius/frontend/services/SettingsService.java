@@ -1,16 +1,19 @@
 package ca.usherbrooke.notifius.frontend.services;
 
 import ca.usherbrooke.notifius.frontend.models.NotificationSender;
-import ca.usherbrooke.notifius.frontend.models.Settings;
 import ca.usherbrooke.notifius.frontend.models.Service;
+import ca.usherbrooke.notifius.frontend.models.Settings;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @org.springframework.stereotype.Service
 public class SettingsService
@@ -23,7 +26,7 @@ public class SettingsService
     @Value("${notifius.backend.base-url}")
     private String notifiusBaseEndpoint;
 
-    public Settings getSettings(@NotNull String userID)
+    public Settings getSettingsForUser(@NotNull String userID)
     {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.getForObject(String.format(SETTINGS_URL_FORMAT,
@@ -31,21 +34,7 @@ public class SettingsService
                                                        userID), Settings.class);
     }
 
-    public NotificationSender getNotificationSenders()
-    {
-        RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(String.format(NOTIFICATION_SENDERS_URL_FORMAT,
-                                                       notifiusBaseEndpoint), NotificationSender.class);
-    }
-
-    public Service getServices()
-    {
-        RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(String.format(SERVICES_URL_FORMAT,
-                                                       notifiusBaseEndpoint), Service.class);
-    }
-
-    public Settings setSettings(String userID, Settings settings)
+    public Settings setSettingsForUser(String userID, Settings settings)
     {
         RestTemplate restTemplate = new RestTemplate();
         String url = String.format(SETTINGS_URL_FORMAT,
@@ -57,5 +46,24 @@ public class SettingsService
 
         HttpEntity<Settings> requestEntity = new HttpEntity<>(settings, headers);
         return restTemplate.postForObject(url, requestEntity, Settings.class);
+    }
+
+    public List<NotificationSender> getAllNotificationSenders()
+    {
+        NotificationSender[] senders = new RestTemplate().getForObject(String.format(NOTIFICATION_SENDERS_URL_FORMAT,
+                                                                                     notifiusBaseEndpoint),
+                                                                       NotificationSender[].class);
+        return senders == null ? new ArrayList<>() : Arrays.stream(senders)
+                                                           .sorted(Comparator.comparing(NotificationSender::getDisplayName))
+                                                           .collect(Collectors.toList());
+    }
+
+    public List<Service> getAllServices()
+    {
+        Service[] services = new RestTemplate().getForObject(String.format(SERVICES_URL_FORMAT,
+                                                                           notifiusBaseEndpoint), Service[].class);
+        return services == null ? new ArrayList<>() : Arrays.stream(services)
+                                                            .sorted(Comparator.comparing(Service::getDisplayName))
+                                                            .collect(Collectors.toList());
     }
 }

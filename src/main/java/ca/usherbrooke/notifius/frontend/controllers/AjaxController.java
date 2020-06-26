@@ -1,7 +1,6 @@
 package ca.usherbrooke.notifius.frontend.controllers;
 
 import ca.usherbrooke.notifius.frontend.models.Notification;
-import ca.usherbrooke.notifius.frontend.models.NotificationSender;
 import ca.usherbrooke.notifius.frontend.models.Settings;
 import ca.usherbrooke.notifius.frontend.services.NotificationService;
 import ca.usherbrooke.notifius.frontend.services.SettingsService;
@@ -28,7 +27,7 @@ public class AjaxController
         Map<String, Object> details = ((AttributePrincipalImpl) principal).getAttributes();
         String userId = (String) details.get("cip");
 
-        return settingsService.setSettings(userId, settings);
+        return settingsService.setSettingsForUser(userId, settings);
     }
 
     @PostMapping("send-notification")

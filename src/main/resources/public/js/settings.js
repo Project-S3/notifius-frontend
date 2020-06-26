@@ -6,7 +6,8 @@ document.getElementById(settingFormSubmitButtonID).onclick = function() {
     const enableServices = [];
     const notificationSenders = {};
     for (const serviceCheckbox of document.getElementsByClassName(settingServiceInputClass)) {
-        if (serviceCheckbox.checked || serviceCheckbox.id == "TEST") {
+        // if (serviceCheckbox.checked || serviceCheckbox.id === "TEST") {
+        if (serviceCheckbox.checked) {
             enableServices.push(serviceCheckbox.value);
         }
     }
@@ -37,3 +38,5 @@ document.getElementById(testNotificationButtonID).onclick = function () {
         alert("Notification envoyée")
     });
 };
+
+// document.getElementById('TEST').disabled = true;

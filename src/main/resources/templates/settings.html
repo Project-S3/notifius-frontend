@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head"></head>
-<body onload="document.getElementById('TEST').disabled = true;">
+<body>
 
 <div th:replace="fragments/header"></div>
 
@@ -17,16 +17,18 @@
                 <p class="lead">Choisissez les services dont vous voulez recevoir des notifications</p>
                 <hr class="my-4">
 
-                <div th:each="service : ${services.keySet()}" class="form-group">
+                <div th:each="service : ${services}" class="form-group">
                     <div class="setting-row">
                         <div class="setting-row__label">
-                            <label class="setting-row__tag" th:text="${services.get(service)[0]}" th:for="${service}"></label>
+                            <label class="setting-row__tag"
+                                   th:text="${service.getDisplayName()}"
+                                   th:for="${service.getId()}"></label>
 
                             <label class="setting-row__check">
                                 <input class="label__checkbox form-control settings-service-checkbox" type="checkbox"
-                                       th:id="${service}"
-                                       th:value="${service}"
-                                       th:checked="${settings.getEnableServices().contains(service)}"/>
+                                       th:id="${service.getId()}"
+                                       th:value="${service.getId()}"
+                                       th:checked="${settings.getEnableServices().contains(service.getId())}"/>
                                 <span class="label__text">
                                   <span class="label__check">
                                     <i class="fa fa-check icon"></i>
@@ -34,7 +36,7 @@
                                 </span>
                             </label>
                         </div>
-                        <label class="setting-row__description" th:text="${services.get(service)[1]}" ></label>
+                        <label class="setting-row__description" th:text="${service.getDescription()}" ></label>
                     </div>
 
                 </div>
@@ -48,16 +50,16 @@
                 <p class="lead">Choisissez via quelles plateformes vous voulez recevoir vos notifications</p>
                 <hr class="my-4">
 
-                <div th:each="notifSender : ${notificationSenders.keySet()}" class="form-group">
+                <div th:each="notifSender : ${notificationSenders}" class="form-group">
 
                     <div class="setting-row">
                         <div class="setting-row__label">
-                            <label class="setting-row__tag" th:text="${notificationSenders.get(notifSender)}" th:for="${notifSender}"></label>
+                            <label class="setting-row__tag" th:text="${notifSender.getDisplayName()}" th:for="${notifSender.getId()}"></label>
                             <label class="setting-row__check">
 
                                 <input class="label__checkbox form-control" type="checkbox"
-                                       th:id="${notifSender}"
-                                       th:checked="${settings.getNotificationSenders().containsKey(notifSender)}"/>
+                                       th:id="${notifSender.getId()}"
+                                       th:checked="${settings.getNotificationSenders().containsKey(notifSender.getId())}"/>
                                 <span class="label__text">
                                   <span class="label__check">
                                     <i class="fa fa-check icon"></i>
@@ -66,9 +68,9 @@
                             </label>
                         </div>
                         <label class="setting-row__value">
-                            <input th:id="${notifSender}+'Value'"
+                            <input th:id="${notifSender.getId()} + 'Value'"
                                    class="form-control settings-notification-sender-input notifius-textfield"
-                                   th:value="${settings.getNotificationSenders().getOrDefault(notifSender,'')}">
+                                   th:value="${settings.getNotificationSenders().getOrDefault(notifSender.getId(),'')}">
                         </label>
 
                     </div>
