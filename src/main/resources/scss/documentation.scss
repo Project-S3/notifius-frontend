@@ -1,0 +1,67 @@
+@import "variables";
+
+.documentation-container {
+  padding-bottom: 5rem;
+  background-color: rgba(0, 0, 0, 0.05);
+
+  .jumbotron {
+    background-color: #ffffff;
+    color: $notifius-green;
+
+    h1 {
+      font-weight: lighter;
+      font-size: 3rem;
+      padding-left: 5rem;
+    }
+
+    hr {
+      color: $notifius-darkgreen;
+    }
+    &.discord-container {
+      h1 {
+        color: $discord-color;
+        &:before {
+          content: url(https://discord.com/assets/f8389ca1a741a115313bede9ac02e2c0.svg);
+          position: absolute;
+          width: 3rem;
+          margin-left: -5rem;
+        }
+      }
+    }
+
+    &.team-container {
+      h1 {
+        color: $team-color;
+        &:before {
+          content: url(https://upload.wikimedia.org/wikipedia/commons/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg);
+          position: absolute;
+          width: 3rem;
+          margin-left: -5rem;
+        }
+      }
+    }
+
+    &.slack-container {
+      h1 {
+        color: $slack-color;
+        &:before {
+          content: url(https://cdn.worldvectorlogo.com/logos/slack-new-logo.svg);
+          position: absolute;
+          width: 3rem;
+          margin-left: -5rem;
+        }
+      }
+    }
+    &.webhook-container {
+      i {
+        width: 5rem;
+        font-size: 3rem;
+        color: rgba(0, 0, 0, 0.5);
+      }
+      h1 {
+        padding-left: 0;
+        display: inline-block;
+      }
+    }
+  }
+}

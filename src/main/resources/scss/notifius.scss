@@ -1,12 +1,9 @@
-/*!
- * Copyright (c) 2020. Universitée de Sherbrooke, All rights reserved.
- */
-
 @import "variables";
 @import "header";
 @import "sidenav";
 @import "notification";
 @import "settings";
+@import "documentation";
 @import "notifCard";
 @import "checkbox";
 @import "button";
@@ -24,7 +21,7 @@
 
   .content-container {
     position: relative;
-    margin: 1rem;
+    padding: 1rem;
   }
 }
 
