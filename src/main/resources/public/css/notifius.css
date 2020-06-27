@@ -115,6 +115,7 @@
   margin-right: 0.5rem;
 }
 .settings-container .jumbotron {
+  padding: 2rem 1.5rem;
   background-color: #ffffff;
 }
 .settings-container .jumbotron h1 {
