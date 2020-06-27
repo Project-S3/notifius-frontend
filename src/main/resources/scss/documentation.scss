@@ -6,7 +6,6 @@
 
   .jumbotron {
     background-color: #ffffff;
-    color: $notifius-green;
 
     h1 {
       font-weight: lighter;
@@ -15,7 +14,8 @@
     }
 
     hr {
-      color: $notifius-darkgreen;
+      height: 0.05rem;
+      background-color: $notifius-darkgreen;
     }
     &.discord-container {
       h1 {
@@ -26,6 +26,13 @@
           width: 3rem;
           margin-left: -5rem;
         }
+      }
+      hr {
+        height: 0.05rem;
+        background-color: $discord-color;
+      }
+      a {
+        color: $discord-color;
       }
     }
 
@@ -39,6 +46,13 @@
           margin-left: -5rem;
         }
       }
+      hr {
+        height: 0.05rem;
+        background-color: $team-color;
+      }
+      a {
+        color: $team-color;
+      }
     }
 
     &.slack-container {
@@ -50,6 +64,13 @@
           width: 3rem;
           margin-left: -5rem;
         }
+      }
+      hr {
+        height: 0.05rem;
+        background-color: $slack-color;
+      }
+      a {
+        color: $slack-color
       }
     }
     &.webhook-container {

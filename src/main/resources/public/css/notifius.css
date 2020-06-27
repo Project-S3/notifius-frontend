@@ -122,7 +122,8 @@
   color: #067240;
 }
 .settings-container .jumbotron hr {
-  color: #067240;
+  height: 0.05rem;
+  background-color: #067240;
 }
 
 @media screen and (max-width: 960px) {
@@ -153,7 +154,6 @@
 }
 .documentation-container .jumbotron {
   background-color: #ffffff;
-  color: #00a759;
 }
 .documentation-container .jumbotron h1 {
   font-weight: lighter;
@@ -161,7 +161,8 @@
   padding-left: 5rem;
 }
 .documentation-container .jumbotron hr {
-  color: #067240;
+  height: 0.05rem;
+  background-color: #067240;
 }
 .documentation-container .jumbotron.discord-container h1 {
   color: #7289da;
@@ -172,6 +173,13 @@
   width: 3rem;
   margin-left: -5rem;
 }
+.documentation-container .jumbotron.discord-container hr {
+  height: 0.05rem;
+  background-color: #7289da;
+}
+.documentation-container .jumbotron.discord-container a {
+  color: #7289da;
+}
 .documentation-container .jumbotron.team-container h1 {
   color: #4c4272;
 }
@@ -181,6 +189,13 @@
   width: 3rem;
   margin-left: -5rem;
 }
+.documentation-container .jumbotron.team-container hr {
+  height: 0.05rem;
+  background-color: #4c4272;
+}
+.documentation-container .jumbotron.team-container a {
+  color: #4c4272;
+}
 .documentation-container .jumbotron.slack-container h1 {
   color: #510049;
 }
@@ -189,6 +204,13 @@
   position: absolute;
   width: 3rem;
   margin-left: -5rem;
+}
+.documentation-container .jumbotron.slack-container hr {
+  height: 0.05rem;
+  background-color: #510049;
+}
+.documentation-container .jumbotron.slack-container a {
+  color: #510049;
 }
 .documentation-container .jumbotron.webhook-container i {
   width: 5rem;
