@@ -74,9 +74,10 @@
     padding: 0;
   }
 }
-/*!
- * Copyright (c) 2020. Universitée de Sherbrooke, All rights reserved.
- */
+.notification-container {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
 .settings-container {
   padding-bottom: 5rem;
   background-color: rgba(0, 167, 89, 0.07);
@@ -154,11 +155,13 @@
 }
 .documentation-container .jumbotron {
   background-color: #ffffff;
+  font-size: 1.1rem;
 }
 .documentation-container .jumbotron h1 {
   font-weight: lighter;
   font-size: 3rem;
   padding-left: 5rem;
+  color: #067240;
 }
 .documentation-container .jumbotron hr {
   height: 0.05rem;
@@ -227,7 +230,7 @@
  */
 .notif-card-container {
   margin: 1rem 0;
-  border-color: #00a759;
+  border-color: rgba(0, 167, 89, 0.07);
 }
 .notif-card-container .card-header {
   background-color: rgba(0, 167, 89, 0.07);

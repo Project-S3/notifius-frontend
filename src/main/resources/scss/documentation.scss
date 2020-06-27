@@ -6,11 +6,12 @@
 
   .jumbotron {
     background-color: #ffffff;
-
+    font-size: 1.1rem;
     h1 {
       font-weight: lighter;
       font-size: 3rem;
       padding-left: 5rem;
+      color: $notifius-darkgreen;
     }
 
     hr {
