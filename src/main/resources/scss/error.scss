@@ -1,0 +1,96 @@
+/*!
+ * Copyright (c) 2020. Universitée de Sherbrooke, All rights reserved.
+ */
+
+@import "variables";
+
+.body-container {
+  padding-left: 0 !important;
+
+  .error-container {
+    text-align: center;
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+
+    .error-status-container {
+
+      .error-status {
+        font-family: monospace;
+        font-size: 80px;
+        //color: $notifius-green;
+        color: #5b5d5c;
+        margin-right: 5px;
+        margin-top: 10px;
+      }
+
+      .fa-cog {
+        transform: rotate(360deg);
+      }
+    }
+
+    .error-text-container {
+      .error-text {
+        font-size: 22px;
+      }
+    }
+
+    .three-cogs {
+      position: relative;
+
+      width: 348px;
+      //margin: auto;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 90px;
+      color: #000000;
+      opacity: 10%;
+      padding-right: 100px;
+
+      > .fa:nth-child(1) {
+        animation-duration: 4s;
+      }
+
+      > .fa:nth-child(2),
+      > .fa:nth-child(3) {
+        position: absolute;
+        top: -0.4em;
+        right: -0.45em;
+        animation-direction: reverse;
+        animation-duration: 3s;
+      }
+
+      > .fa:nth-child(3) {
+        top: auto;
+        bottom: -0.2em;
+      }
+    }
+  }
+}
+
+// mobile adaptation
+@media screen and (max-width: 960px) {
+  .body-container {
+
+    .error-container {
+      .three-cogs.fa-3x {
+        font-size: 2em;
+      }
+
+      .three-cogs {
+        //width: 162px;
+        width: 10rem;
+        //margin: auto;
+        margin-left: -20px;
+
+        .fa-3x {
+          font-size: 2em;
+        }
+
+        .fa-4x {
+          font-size: 3em;
+        }
+      }
+    }
+  }
+}

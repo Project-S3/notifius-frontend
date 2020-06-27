@@ -1,0 +1,34 @@
+<!--
+  ~ Copyright (c) 2020. Universitée de Sherbrooke, All rights reserved.
+  -->
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head"></head>
+<body>
+
+<div th:replace="fragments/header"></div>
+
+<div class="body-container">
+    <div class="error-container">
+        <div class="error-status-container">
+            <div class="error-status" th:text="'Error ' + ${status}">
+            </div>
+        </div>
+        <div class="error-text-container">
+            <div class="error-text" th:text="'Woops, something went wrong!'">
+            </div>
+        </div>
+
+        <div class="three-cogs fa-3x">
+            <i class="fa fa-cog fa-spin fa-4x fa-fw"></i>
+            <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+            <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+        </div>
+    </div>
+</div>
+
+<script src="/js/settings.js"></script>
+
+</body>
+</html>
