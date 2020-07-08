@@ -19,7 +19,7 @@ const initialSetting = getSettingsFromForm();
 
 document.getElementById(testNotificationButtonID).onclick = function () {
     if (JSON.stringify(initialSetting) !== JSON.stringify(getSettingsFromForm())) {
-        if (!window.confirm("Vous avez des changements non sauvegardés, voulez-vous continuer")) return;
+        if (!window.confirm("Vous avez des changements non sauvegardés, voulez-vous continuer ?")) return;
     }
 
     fetch("/send-notification", {
