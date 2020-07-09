@@ -60,7 +60,6 @@ public class NotificationService
         Notification notification = new Notification();
         notification.setTitle("Test de vos notifications");
         notification.setContent(joke);
-        notification.setDate(dateFormat.format(new Date(System.currentTimeMillis())));
         notification.setService("NOTIFIUS");
 
         RestTemplate restTemplate = new RestTemplate();
