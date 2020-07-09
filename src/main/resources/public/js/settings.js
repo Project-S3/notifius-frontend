@@ -10,6 +10,8 @@ document.getElementById(settingFormSubmitButtonID).onclick = function () {
     }).then(response => {
         if (response.ok) {
             location.reload();
+        } else {
+            window.confirm(`Les changements n'ont pas été sauvegardé. \n ${response.body['message']}`)
         }
     });
 };

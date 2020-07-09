@@ -11,6 +11,9 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.web.client.RestTemplate;
 
 import javax.validation.constraints.NotNull;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 @org.springframework.stereotype.Service
 public class SettingsService
@@ -40,6 +43,7 @@ public class SettingsService
         headers.add("Content-Type", "application/json");
 
         HttpEntity<Settings> requestEntity = new HttpEntity<>(settings, headers);
+
         return restTemplate.postForObject(url, requestEntity, Settings.class);
     }
 }
