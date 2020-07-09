@@ -11,7 +11,9 @@ document.getElementById(settingFormSubmitButtonID).onclick = function () {
         if (response.ok) {
             location.reload();
         } else {
-            window.confirm(`Les changements n'ont pas été sauvegardé. \n ${response.body['message']}`)
+            response.json().then(body => {
+                alert(`Les changements n'ont pas été sauvegardé.\n${body['message']}`)
+            });
         }
     });
 };

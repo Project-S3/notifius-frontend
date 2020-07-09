@@ -30,19 +30,24 @@ public class AjaxController
     @Autowired
     private NotificationService notificationService;
 
-    @PostMapping("settings")
-    public ResponseEntity<Object> settings(Principal principal, @RequestBody Settings settings)
+    @PostMapping(path="settings",
+                 produces = "application/json")
+    public ResponseEntity<String> settings(Principal principal, @RequestBody Settings settings)
     {
         Map<String, Object> details = ((AttributePrincipalImpl) principal).getAttributes();
         String userId = (String) details.get("cip");
+        String response = "";
         try {
-            return new ResponseEntity<>(settingsService.setSettingsForUser(userId, settings), HttpStatus.CREATED);
+            settingsService.setSettingsForUser(userId, settings);
+            return new ResponseEntity<>(response, HttpStatus.CREATED);
         } catch (RestClientException e) {
-            return new ResponseEntity<>(((HttpClientErrorException.BadRequest) e).getResponseBodyAsString(), HttpStatus.BAD_REQUEST);
+            response = ((HttpClientErrorException.BadRequest) e).getResponseBodyAsString();
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
         }
     }
 
-    @PostMapping("send-notification")
+    @PostMapping(path = "send-notification",
+                 produces = "application/json")
     public Notification sendNotification(Principal principal)
     {
         Map<String, Object> details = ((AttributePrincipalImpl) principal).getAttributes();
